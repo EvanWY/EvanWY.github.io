@@ -1,5 +1,0 @@
-jekyll build --destination ../out
-cd ../out
-git add -A *
-git commit -m  "AUTO_BUILD_COMMIT"
-git push
