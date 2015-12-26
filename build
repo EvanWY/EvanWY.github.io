@@ -1,4 +1,4 @@
-jekyll build -d ../evanwy.github.io --watch
+jekyll build -d ../evanwy.github.io
 cd ../evanwy.github.io
 git add -A .
 git commit -m "AUTO"
