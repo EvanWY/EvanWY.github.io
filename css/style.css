@@ -223,17 +223,17 @@ nav ul {
 nav li {
   float:left;
   height:24px;
-  width:134px;
+  width:130px;
   border-right:1px solid #e5e5e5;
 }
 
 nav li:last-child {
   border-right:none;
-  width:136px;
+  width:130px;
 }
 
 nav li a {
-  font-size:22px;
+  font-size:11px;
   color:#999;
   display:block;
   text-align:center;
