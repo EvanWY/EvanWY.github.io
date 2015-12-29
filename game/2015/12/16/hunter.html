@@ -89,8 +89,9 @@
 
 <p>The Storytelling System is the most challenging task I have finished in this project. I was given the task to design and implement this system which moves camera and characters to film scenes, and display dialogues during the playback.</p>
 
-<p>It was a entirely new system, and no similar function has ever been added to this game. Therefore, biggest problem in this task is not the technical implementation, but to figure out how the system looks like. 
-####Storytelling System</p>
+<p>It was a entirely new system, and no similar function has ever been added to this game. Therefore, biggest problem in this task is not the technical implementation, but to figure out how the system looks like. </p>
+
+<h4 id="storytelling-system">Storytelling System</h4>
 
 <p>Design and implement Storytelling System which moves camera and characters to film scenes, and display dialogues during the playback.</p>
 
@@ -111,32 +112,28 @@
   <li>Taught the designers and find new problems</li>
 </ol>
 
-<blockquote>
-  <p>When I felt some parameters in the configuration is not easy to use or too hard for nontechnical people to understand, I modified it. For example, I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</p>
-</blockquote>
+<p><em>When I felt some parameters in the configuration is not easy to use or too hard for nontechnical people to understand, I modified it. For example, I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</em></p>
 
 <p><strong>Result</strong>
 Finally, I successfully created a powerful system which was easy to use and works well. Some features is listed here:</p>
 
-<blockquote>
-  <ul>
-    <li>
-      <p>A scene is split into “stages”. When a stage end, the following stage start.</p>
-    </li>
-    <li>
-      <p>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</p>
-    </li>
-    <li>
-      <p>Dialogue sequence is driven by user clicking.</p>
-    </li>
-    <li>
-      <p>Camera sequence is driven by playback time.</p>
-    </li>
-    <li>
-      <p>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</p>
-    </li>
-  </ul>
-</blockquote>
+<ul>
+  <li>
+    <p>A scene is split into “stages”. When a stage end, the following stage start.</p>
+  </li>
+  <li>
+    <p>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</p>
+  </li>
+  <li>
+    <p>Dialogue sequence is driven by user clicking.</p>
+  </li>
+  <li>
+    <p>Camera sequence is driven by playback time.</p>
+  </li>
+  <li>
+    <p>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</p>
+  </li>
+</ul>
 
 
     </div>
