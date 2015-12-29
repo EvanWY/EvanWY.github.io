@@ -1,4 +1,3 @@
-git pull
 jekyll build -d ../EvanWY.github.io
 cd ../EvanWY.github.io
 git add -A .
