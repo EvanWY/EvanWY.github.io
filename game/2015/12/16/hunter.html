@@ -70,15 +70,13 @@
 <h3 id="overview">Overview</h3>
 
 <ul>
-  <li>Role: Front-end Programmer</li>
-  <li>Team: 16 People, Sisanjiujiu Company</li>
-  <li>Tools: Unity 3D, C#</li>
-  <li>Platforms: Androids, iOS, Windows</li>
+  <li><strong>Role</strong>: Front-end Programmer</li>
+  <li><strong>Team</strong>: 16 People, Sisanjiujiu Company</li>
+  <li><strong>Tools</strong>: Unity 3D, C#</li>
+  <li><strong>Platforms</strong>: Androids, iOS, Windows</li>
 </ul>
 
 <h3 id="responsibilities">Responsibilities </h3>
-
-<p>I quickly took part in the development after one or two weeks of studying about Unity 3D. I started with bug fixing and small modifications. Later, I built some complete system. I am currently working on the storytelling system and  PC version of the game.</p>
 
 <ul>
   <li>Storytelling System</li>
@@ -91,31 +89,54 @@
 
 <p>The Storytelling System is the most challenging task I have finished in this project. I was given the task to design and implement this system which moves camera and characters to film scenes, and display dialogues during the playback.</p>
 
-<p>It was a entirely new system, and no similar function has ever been added to this game. Therefore, biggest problem in this task is not the technical implementation, but to figure out how the system looks like. </p>
+<p>It was a entirely new system, and no similar function has ever been added to this game. Therefore, biggest problem in this task is not the technical implementation, but to figure out how the system looks like. 
+####Storytelling System</p>
 
-<p>To solve this problem, I discussed with the designer many times to understand her purposes. Then I abstract a program procedures correspond to the logic of storytelling steps. After that, I designed the configuration to control the camera movement and scene change, and taught the designer about it. </p>
+<p>Design and implement Storytelling System which moves camera and characters to film scenes, and display dialogues during the playback.</p>
 
-<p>When I felt some parameters in the configuration is not easy to use or too hard for nontechnical people to understand, I modified it. For example, I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</p>
+<p><strong>Problems</strong></p>
 
-<p>Finally, I successfully created a powerful system which was easy to use and works well. Some features is listed here:</p>
+<ol>
+  <li>Entirely new system, no similar system before</li>
+  <li>Complex logic of playback sequence</li>
+  <li>Nontechnical user (User is the designers)</li>
+</ol>
 
-<ul>
-  <li>
-    <p>A scene is split into “stages”. When a stage end, the following stage start.</p>
-  </li>
-  <li>
-    <p>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</p>
-  </li>
-  <li>
-    <p>Dialogue sequence is driven by user clicking.</p>
-  </li>
-  <li>
-    <p>Camera sequence is driven by playback time.</p>
-  </li>
-  <li>
-    <p>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</p>
-  </li>
-</ul>
+<p><strong>Solutions</strong></p>
+
+<ol>
+  <li>Discussed with the designers to understand the requirement</li>
+  <li>Abstract a program procedures correspond to the logic of storytelling steps</li>
+  <li>Designed a configuration to control the camera movement and scene change</li>
+  <li>Taught the designers and find new problems</li>
+</ol>
+
+<blockquote>
+  <p>When I felt some parameters in the configuration is not easy to use or too hard for nontechnical people to understand, I modified it. For example, I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</p>
+</blockquote>
+
+<p><strong>Result</strong>
+Finally, I successfully created a powerful system which was easy to use and works well. Some features is listed here:</p>
+
+<blockquote>
+  <ul>
+    <li>
+      <p>A scene is split into “stages”. When a stage end, the following stage start.</p>
+    </li>
+    <li>
+      <p>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</p>
+    </li>
+    <li>
+      <p>Dialogue sequence is driven by user clicking.</p>
+    </li>
+    <li>
+      <p>Camera sequence is driven by playback time.</p>
+    </li>
+    <li>
+      <p>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</p>
+    </li>
+  </ul>
+</blockquote>
 
 
     </div>
