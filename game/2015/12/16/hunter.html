@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Wang Yang - Portfolio</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Wang Yang's Portfolio&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Projects</a>
+                    </li>
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Tiantian Hunter
+            <small>Jul 2015 to Present</small>
+        </h1>
+        <img class="img-responsive" src="/img/hunter/cover.jpg" />
+        <!--<p class="post-excerpt"> content  </p>-->
+        <p>This game is a MMORPG with a side-scrolling battle system on mobile platforms. Player act as a character who is learning about battle in a Demon Hunting School. We use Unity 3D and C# in this game. </p>
+
+<h3 id="overview">Overview</h3>
+
+<p> * Role: Front-end Programmer
+ * Team: 16 People, Sisanjiujiu Company
+ * Tools: Unity 3D, C#
+ * Platforms: Androids, iOS, Windows</p>
+
+<h3 id="responsibilities">Responsibilities </h3>
+
+<p>I quickly took part in the development after one or two weeks of studying about Unity 3D. I started with bug fixing and small modifications. Later, I built some complete system. I am currently working on the storytelling system and  PC version of the game.</p>
+
+<p> * Storytelling System
+ * Windows PC version
+ * Activity System
+ * Clan System</p>
+
+<h3 id="challenges">Challenges </h3>
+
+<p>The Storytelling System is the most challenging task I have finished in this project. I was given the task to design and implement this system which moves camera and characters to film scenes, and display dialogues during the playback.</p>
+
+<p>It was a entirely new system, and no similar function has ever been added to this game. Therefore, biggest problem in this task is not the technical implementation, but to figure out how the system looks like. </p>
+
+<p>To solve this problem, I discussed with the designer many times to understand her purposes. Then I abstract a program procedures correspond to the logic of storytelling steps. After that, I designed the configuration to control the camera movement and scene change, and taught the designer about it. </p>
+
+<p>When I felt some parameters in the configuration is not easy to use or too hard for nontechnical people to understand, I modified it. For example, I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</p>
+
+<p>Finally, I successfully created a powerful system which was easy to use and works well. Some features is listed here:
+ * A scene is split into “stages”. When a stage end, the following stage start.
+ * A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.
+ * Dialogue sequence is driven by user clicking.
+ * Camera sequence is driven by playback time.
+ * Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</p>
+
+    </div>
+</div>
+
+<hr>
+
+
+
+	<!-- Footer -->
+
+	<footer>
+	    <div class="row">
+		<div class="col-lg-12">
+		    <p>Copyright &copy; Wang Yang , 2016</p>
+		</div>
+	    </div>
+	    <!-- /.row -->
+	</footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
