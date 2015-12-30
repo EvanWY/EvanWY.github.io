@@ -95,7 +95,7 @@
 
 <h3 id="story-scene-system">Story Scene System</h3>
 
-<p>My task was to design and implement Story Scene System which moves camera and characters to film scenes, and display dialogues during the playback.</p>
+<p>Story Scene system is the most challenging task I finished in this project. My task was to design and implement Story Scene System which moves camera and characters to film scenes, and display dialogues during the playback.</p>
 
 <p><strong>Problems</strong></p>
 
@@ -108,37 +108,30 @@
 <p><strong>Solutions</strong></p>
 
 <ul>
-  <li>Discussed with designers to understand the requirement</li>
-  <li>Abstract a program procedures correspond to the logic of Story Scene steps</li>
-  <li>Designed a configuration to control the camera movement and scene change</li>
-  <li>
-    <p>Taught designers and solve new problems</p>
-
-    <p><em><strong>e.g.</strong> I use the camera position and camera target position to define the movement at first, but later I knew that It is not very easy to understand without solid space geometry knowledge. So I changes the program to use camera position and camera rotation as parameters, which were much easier to obtain.</em></p>
-  </li>
+  <li><strong>Discussed with designers to understand the requirement.</strong> To put it simply, we need support for chatacter movement, character animation, character talking and camera movement. Play these clips in a “reasonable” sequence, which means, dialogue driven by user clicking, and</li>
+  <li><strong>Find a program procedures correspond to the logic of Story Scene steps.</strong> I decided to divide these clips into 2 type, motion clip and dialogue clip. And also divide scene into stages. In each stage of the scene, two types of clips are played independently, but they wait for each other until they both finish. When both type of clips are finished, the scene enter the next stage.</li>
+  <li><strong>Designed a configuration to control the camera movement and scene change.</strong> I put those configuration in a xml file. Dialogues is wrote in it step by step. Motion sequence is wrote with specific position, angle, start time, duration, speed and animation.</li>
+  <li><strong>Taught designers and solve new problems.</strong> I modified the program if I found any difficulties for nontechnical people to use. For example, I used the camera position and camera target position to define camera movement at first, but later I found that It was not easy to understand without solid knowledge of space geometry. So I modified the program to use camera position and camera rotation as parameters, which were much easier to obtain.</li>
 </ul>
 
 <p><strong>Result</strong></p>
 
 <ul>
-  <li>Successfully created a powerful system which was easy to use and works well. Some features is listed here:
-    <ul>
-      <li>A scene is split into “stages”. When a stage end, the following stage start.</li>
-      <li>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</li>
-      <li>Dialogue sequence is driven by user clicking.</li>
-      <li>Camera sequence is driven by playback time.</li>
-      <li>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</li>
-    </ul>
-  </li>
+  <li>Successfully created a powerful system which was easy to use and works well. Some features is listed here:</li>
+  <li>A scene is split into “stages”. When a stage end, the following stage start.</li>
+  <li>A stage has 2 independent “sequences”, the dialogue sequence and the camera sequence. The stage end when both sequence end.</li>
+  <li>Dialogue sequence is driven by user clicking.</li>
+  <li>Camera sequence is driven by playback time.</li>
+  <li>Camera sequence contains camera and character motions. These motions is configured with specific position, angle, start time, duration, speed and animation.</li>
   <li>Story Scene System Screenshots</li>
 </ul>
 
 <p align="left" style="margin-left:60px;">
-  <img src="/img/hunter/story1.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
-  <img src="/img/hunter/story2.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
-  <br />
-  <img src="/img/hunter/story3.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
-  <img src="/img/hunter/story4.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/story1.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/story2.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<br />
+<img src="/img/hunter/story3.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/story4.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
 </p>
 
     </div>
