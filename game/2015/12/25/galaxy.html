@@ -86,14 +86,14 @@
 
 <h4 id="battle-code-framework">Battle code framework</h4>
 
-<p>For security, we compute battle in server, and send the process detail and result to front-end for display. I use finite state machine to ensure maintainability. I impelemented a</p>
+<p>For security, we compute battle in server, and send the process detail and result to front-end for display. I use finite state machine to ensure maintainability and impelemented a very simple and succinct framework for it.</p>
 
-<p><code class="highlighter-rouge">
-        state.CurrState = function(arg)
-                --state actions
-                transition(state.NextState, secs, {nextArg})
-        end
-</code></p>
+<blockquote>
+  <p>state.Current = function(arg)
+	– do something
+	transition (state.Next, duration, {nextArg})
+end</p>
+</blockquote>
 
 <h3 id="videos--screenshots">Videos &amp; Screenshots</h3>
 
