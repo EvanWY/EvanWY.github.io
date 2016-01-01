@@ -67,7 +67,7 @@
         </h1>
         <img class="img-responsive" src="/img/galaxy/cover.jpg" />
         <!--<p class="post-excerpt"> content  </p>-->
-        <p>Galaxy is an idle strategic game. Player manage a space fleet with one to eight ships. The fleet keep searching and fighting enemy automatically, even when the player is offline. Player may customize their ships and weapons. My main responsibility is front-end programming, I also help UI design and battle design.</p>
+        <p>Galaxy is an idle strategic game. Player manage a space fleet with one to eight ships. The fleet keep travelling automatically, even when the player is offline. During the travel, the fleet may fighting enemy or exploiting planet. Player may customize their ships and weapons. My main responsibility is front-end programming, I also help UI design and battle design.</p>
 
 <h3 id="overview">Overview</h3>
 
@@ -86,25 +86,22 @@
 
 <h3 id="challenges">Challenges</h3>
 
-<p>**Battle code framework **</p>
+<p><br /></p>
 
-<p>For security, we compute battle in server, and send the process detail and result to front-end to display. I use finite state machine to ensure maintainability. The code is listed here.</p>
+<p><strong>Battle Logic</strong></p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">show</span>
-  <span class="nb">puts</span> <span class="s2">"Outputting a very lo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-ong lo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-ong line"</span>
-  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># show.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
+<p>For security, we compute battle in server, and send the process detail and result to front-end. I design the finite state machine as shown below:</p>
+
+<p><img src="/img/galaxy/fsm.jpg" /></p>
+
+<p>I also design a intuitive and simple code framework for finite state machine:</p>
 
 <figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">state</span><span class="p">.</span><span class="n">Current</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
     <span class="c1">-- do something</span>
     <span class="n">transition</span> <span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">Next</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="p">{</span><span class="n">nextArg</span><span class="p">})</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>The impelementation was very intuitive and simple, so that I could finish the entire state machine quickly.</p>
+<p>Because of the clear state machine logic and the simple code framework, I finished the entire state machine quickly.</p>
 
 <h3 id="videos--screenshots">Videos &amp; Screenshots</h3>
 
