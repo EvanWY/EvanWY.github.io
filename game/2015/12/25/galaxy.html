@@ -89,7 +89,7 @@
 
 <p>I wrote most of the code in this project, and I will list the most challenging part, including battle logic and battle animation.</p>
 
-<hr />
+<p><br /></p>
 
 <h4 id="battle-logic">Battle Logic</h4>
 
@@ -106,7 +106,7 @@
 
 <p>Because of the clear state machine logic and the simple code framework, I finished the entire state machine quickly.</p>
 
-<hr />
+<p><br /></p>
 
 <h4 id="battle-animation">Battle Animation</h4>
 
@@ -122,10 +122,46 @@
 
 <p>Then I translation, rotation and scaling them to the proper position.</p>
 
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="k">function</span> <span class="nf">getTransform</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">aniPosBegin</span><span class="p">,</span> <span class="n">aniPosEnd</span><span class="p">)</span>
+	<span class="kd">local</span> <span class="n">hit</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="n">attX</span> <span class="o">=</span> <span class="n">aniPosBegin</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+		<span class="n">attY</span> <span class="o">=</span> <span class="n">aniPosBegin</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+		<span class="n">defX</span> <span class="o">=</span> <span class="n">aniPosEnd</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+		<span class="n">defY</span> <span class="o">=</span> <span class="n">aniPosEnd</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="kd">local</span> <span class="n">vec1</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="o">=</span> <span class="n">hit</span><span class="p">.</span><span class="n">defX</span> <span class="o">-</span> <span class="n">hit</span><span class="p">.</span><span class="n">attX</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hit</span><span class="p">.</span><span class="n">defY</span> <span class="o">-</span> <span class="n">hit</span><span class="p">.</span><span class="n">attY</span><span class="p">}</span>
+	<span class="kd">local</span> <span class="n">vec2</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="o">=</span> <span class="n">to</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">from</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">to</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">from</span><span class="p">.</span><span class="n">y</span><span class="p">}</span>
+
+	<span class="kd">local</span> <span class="n">sqrtVecsLenMult</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">vec1</span><span class="p">.</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sqrt</span><span class="p">(</span><span class="n">vec2</span><span class="p">.</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">.</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+	<span class="kd">local</span> <span class="n">vecsCos</span> <span class="o">=</span> <span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">vec2</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">vec1</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">vec2</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">sqrtVecsLenMult</span>
+	<span class="kd">local</span> <span class="n">vecsSin</span> <span class="o">=</span> <span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">vec2</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">vec2</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">vec1</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">sqrtVecsLenMult</span>
+
+	<span class="kd">local</span> <span class="n">rad</span> <span class="o">=</span> <span class="p">(</span><span class="n">vecsSin</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">math.acos</span><span class="p">(</span><span class="n">vecsCos</span><span class="p">))</span> <span class="ow">or</span> <span class="o">-</span><span class="nb">math.acos</span><span class="p">(</span><span class="n">vecsCos</span><span class="p">)</span>
+	<span class="kd">local</span> <span class="n">angle</span> <span class="o">=</span> <span class="nb">math.deg</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>
+	
+	<span class="kd">local</span> <span class="n">scale</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">(((</span><span class="n">from</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">to</span><span class="p">.</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">from</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">to</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="nb">math.sqrt</span><span class="p">(((</span><span class="n">hit</span><span class="p">.</span><span class="n">attX</span><span class="o">-</span><span class="n">hit</span><span class="p">.</span><span class="n">defX</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">hit</span><span class="p">.</span><span class="n">attY</span><span class="o">-</span><span class="n">hit</span><span class="p">.</span><span class="n">defY</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span>
+	<span class="kd">local</span> <span class="n">centerX</span> <span class="p">,</span> <span class="n">centerY</span> <span class="o">=</span> <span class="n">GEOMETRY</span><span class="p">.</span><span class="n">rotatePoint</span><span class="p">(</span><span class="n">hit</span><span class="p">.</span><span class="n">attX</span><span class="p">,</span> <span class="n">hit</span><span class="p">.</span><span class="n">attY</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rad</span><span class="p">)</span>
+	<span class="n">centerX</span> <span class="o">=</span> <span class="p">(</span><span class="n">centerX</span> <span class="o">-</span> <span class="n">hit</span><span class="p">.</span><span class="n">attX</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">from</span><span class="p">.</span><span class="n">x</span>
+	<span class="n">centerY</span> <span class="o">=</span> <span class="p">(</span><span class="n">centerY</span> <span class="o">-</span> <span class="n">hit</span><span class="p">.</span><span class="n">attY</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">from</span><span class="p">.</span><span class="n">y</span>
+
+	<span class="kd">local</span> <span class="n">scaleX</span><span class="p">,</span> <span class="n">scaleY</span>
+	<span class="k">if</span> <span class="nb">math.abs</span><span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">math.abs</span><span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="k">then</span>
+		<span class="n">scaleX</span> <span class="o">=</span> <span class="n">scale</span>
+		<span class="n">scaleY</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span>
+		<span class="n">scaleX</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="n">scaleY</span> <span class="o">=</span> <span class="n">scale</span>
+	<span class="k">end</span>
+
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"[battle_scene_manager] [playAttackEffect]"</span><span class="p">,</span> <span class="n">hit</span><span class="p">.</span><span class="n">attX</span><span class="p">,</span> <span class="n">hit</span><span class="p">.</span><span class="n">attY</span><span class="p">,</span> <span class="n">centerX</span><span class="p">,</span> <span class="n">centerY</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">centerX</span><span class="p">,</span> <span class="n">centerY</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">scaleX</span><span class="p">,</span> <span class="n">scaleY</span>
+<span class="k">end</span></code></pre></figure>
+
 <p><img src="/img/galaxy/missile3.jpg" align="middle" style="margin:5px 3px" />
 <img src="/img/galaxy/missile4.jpg" align="middle" style="margin:5px 3px" /></p>
 
-<hr />
+<p><br /></p>
 
 <h3 id="videos--screenshots">Videos &amp; Screenshots</h3>
 
