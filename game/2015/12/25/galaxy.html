@@ -88,12 +88,16 @@
 
 <p>For security, we compute battle in server, and send the process detail and result to front-end for display. I use finite state machine to ensure maintainability and impelemented a very simple and succinct framework for it.</p>
 
-<p><code class="highlighter-rouge">lua
-&gt;	state.Current = function(arg)
-&gt;	    -- do something
-&gt;	    transition (state.Next, duration, {nextArg})
-&gt;	end
-</code></p>
+<p><img src="/img/galaxy/state.jpg" align="middle" /></p>
+<p align="left" style="margin-left:60px;">
+</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>state.Current = function(arg)
+    -- do something
+    transition (state.Next, duration, {nextArg})
+end
+</code></pre>
+</div>
 
 <h3 id="videos--screenshots">Videos &amp; Screenshots</h3>
 
