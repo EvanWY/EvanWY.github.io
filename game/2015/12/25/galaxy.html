@@ -89,18 +89,12 @@
 
 <p>For security, we compute battle in server, and send the process detail and result to front-end for display. I use finite state machine to ensure maintainability. I impelemented a</p>
 
-<p>``` lua</p>
-
-<p>state.TravelFinish = function(nextCountdown)
-	–state actions
-	sendTravelFinish()</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>-- state transition
-transition(state.CheckGain, CONST.BATTLE.TRAVELFINISH_TO_CHECKGAIN, {nextCountdown}) end
-</code></pre>
-</div>
-
-<p>```</p>
+<p><code class="highlighter-rouge">lua
+state.CurrState = function(arg)
+	--state actions
+	transition(state.NextState, secs, {nextArg})
+end
+</code></p>
 
 <h3 id="videos--screenshots">Videos &amp; Screenshots</h3>
 
