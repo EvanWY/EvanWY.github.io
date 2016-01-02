@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Wang Yang - Portfolio</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="/css/syntax.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Wang Yang's Portfolio&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Projects</a>
+                    </li>
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Tiantian Hunter
+            <small></small>
+        </h1>
+        <img class="img-responsive" src="/img/hunter/cover.jpg" />
+        <!--<p class="post-excerpt"> content  </p>-->
+        <br>
+        <p>MMORPG with a side-scrolling battle system on mobile platforms. Player act as a character who is learning about battle in a Demon Hunting School. We use Unity 3D and C# in this game. </p>
+
+<h3 id="overview">Overview</h3>
+
+<ul>
+  <li><strong>Role</strong>: Front-end Programmer</li>
+  <li><strong>Team</strong>: 16 People, Sisanjiujiu Company</li>
+  <li><strong>Tools</strong>: Unity 3D, C#</li>
+  <li><strong>Platforms</strong>: Android, iOS, Windows</li>
+  <li><strong>Official Site</strong>: <a href="http://a.4399.cn/game-id-87855.html">http://a.4399.cn/game-id-87855.html</a></li>
+</ul>
+
+<p align="left" style="margin-left:60px;">
+<img src="/img/hunter/mainscene.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/battle.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+</p>
+
+<h3 id="responsibilities">Responsibilities </h3>
+
+<ul>
+  <li>Story Scene System</li>
+  <li>Windows PC version</li>
+  <li>Activity System</li>
+  <li>Clan System</li>
+  <li>Weapon Upgrade System</li>
+  <li>Pet Equipment System</li>
+</ul>
+
+<h3 id="story-scene-system">Story Scene System</h3>
+
+<p>Story Scene system is the most challenging task I finished in this project. My task was to design and implement Story Scene System which moves camera and characters to film scenes, and display dialogues during the playback.</p>
+
+<p><strong>Problems</strong></p>
+
+<ul>
+  <li>Entirely new system, no similar system before</li>
+  <li>Complex logic of playback sequence</li>
+  <li>Nontechnical user (User is the designers)</li>
+</ul>
+
+<p><strong>Solutions</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Discussed with designers to understand the requirement.</strong> To put it simply, we need support for chatacter movement, character animation, character talking and camera movement, and play these clips in a “reasonable” sequence. Dialogues were driven by user clicking, and motions plays at a fixed time. And user clicking can only affect the story playback speed within a certain range.</p>
+  </li>
+  <li>
+    <p><strong>Find a program procedures correspond to the logic of Story Scene steps.</strong> I decided to divide these clips into 2 type, motion clip and dialogue clip. And also divide scene into stages. In each stage of the scene, two types of clips are played independently, but they wait for each other until they both finish. When both type of clips are finished, the scene enter the next stage.</p>
+  </li>
+  <li>
+    <p><strong>Designed a configuration to control the camera movement and scene change.</strong> I put those configuration in a xml file. Dialogues is wrote in it step by step. Motion sequence is wrote with specific position, angle, start time, duration, speed and animation.</p>
+  </li>
+  <li>
+    <p><strong>Taught designers and solve new problems.</strong> I modified the program if I found any difficulties for nontechnical people to use. For example, I used the camera position and camera target position to define camera movement at first, but later I found that It was not easy to understand without solid knowledge of space geometry. So I modified the program to use camera position and camera rotation as parameters, which were much easier to obtain.</p>
+  </li>
+</ul>
+
+<p><strong>Result</strong></p>
+
+<ul>
+  <li>Successfully created a powerful system which was easy to use and works well.</li>
+  <li>Story Scene System Screenshots</li>
+</ul>
+
+<p align="left" style="margin-left:60px;">
+<img src="/img/hunter/story1.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/story2.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<br />
+<img src="/img/hunter/story3.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+<img src="/img/hunter/story4.jpg" align="middle" style="margin:5px 3px" width="368" height="207" />
+</p>
+
+    </div>
+</div>
+
+<hr>
+
+
+
+	<!-- Footer -->
+
+	<footer>
+	    <div class="row">
+		<div class="col-lg-12">
+		    <p>Copyright &copy; Wang Yang , 2016</p>
+		</div>
+	    </div>
+	    <!-- /.row -->
+	</footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
