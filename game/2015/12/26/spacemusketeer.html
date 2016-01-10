@@ -77,10 +77,6 @@
   <li><strong>Tools</strong>: Unity 3D, MongoDB, Photoshop, etc.</li>
 </ul>
 
-<h3 id="video">Video</h3>
-
-<iframe width="510" height="340" src="http://www.youtube.com/embed/w" frameborder="0" allowfullscreen=""></iframe>
-
 <h3 id="challenges">Challenges</h3>
 
 <h4 id="graphic-performance">Graphic Performance</h4>
@@ -95,10 +91,34 @@
   <li>
     <p><strong>Solution: Change character models and game object resources.</strong> Actually, I change the art style of the entire game.</p>
   </li>
-  <li>
-    <p><strong>Result: The fps increased from 30 to 60. Characters became easily recognizable.</strong></p>
-  </li>
 </ul>
+
+<div style="width:100%;"><div style="margin-left:50px;">
+	Old character and level objects
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/v2lobby.jpg" align="middle" style="margin:5px 3px" width="400" />
+		<img src="/img/spacemusketeer/v2scene.jpg" align="middle" style="margin:5px 3px" width="400" />
+	</div></div>
+	New character and level objects
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/v3lobby.jpg" align="middle" style="margin:5px 3px" width="400" />
+		<img src="/img/spacemusketeer/v3scene.jpg" align="middle" style="margin:5px 3px" width="400" />
+	</div></div>
+</div></div>
+
+<ul>
+  <li><strong>Result: The fps increased from 30 to 80. Characters became easily recognizable.</strong></li>
+</ul>
+<div style="width:100%;"><div style="margin-left:50px;">
+	Old version performance
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/v2performance.jpg" align="middle" style="margin:5px 3px" />
+	</div></div>
+	New version performance
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/v3performance.jpg" align="middle" style="margin:5px 3px" />
+	</div></div>
+</div></div>
 
 <h4 id="network">Network</h4>
 
@@ -109,9 +129,17 @@
   <li>
     <p><strong>Solution: I built a new network toplogy model.</strong> It has three types of nodes, Master Server Node, Slave Server Node and Client Node. Master server runs first, and slave server and client connect to it. When a client request to start a battle, the master server assign a slave server to set up the battle field, then tell the client to connect to it.</p>
   </li>
-  <li>
-    <p><strong>Result: It works well. It can also solve network latency problem.</strong> This solution seperate rooms and lobby, so we can put slave servers all over the world. Then the network latency problem will be easily solved.</p>
-  </li>
+</ul>
+
+<div style="width:100%;"><div style="margin-left:50px;">
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/networkinit.jpg" align="middle" style="margin:5px 3px" width="400" />
+		<img src="/img/spacemusketeer/networkconnect.jpg" align="middle" style="margin:5px 3px" width="400" />
+	</div></div>
+</div></div>
+
+<ul>
+  <li><strong>Result: It works well. It can also solve network latency problem.</strong> This solution seperate rooms and lobby, so we can put slave servers all over the world. Then the network latency problem will be easily solved.</li>
 </ul>
 
 <h4 id="animation">Animation</h4>
