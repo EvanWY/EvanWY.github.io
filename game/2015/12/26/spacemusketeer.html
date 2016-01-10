@@ -67,23 +67,121 @@
         <!--<p class="post-excerpt"> content  </p>-->
         <br>
         <b>My largest one-person game project</b>
-        <p>It is a multiplayer online shooting game, with top-down perspective and twin stick control. I design and impelement most of it, and find most of the art resources from Unity Asset Store. I try my best to make this game simple but high-quality.</p>
+        <p>It is a multiplayer online shooting game, with top-down perspective and twin stick control. I design and programming, and find most of the art resources from Unity Asset Store. I try my best to make this game simple but high-quality.</p>
 
 <h3 id="overview">Overview</h3>
 
 <ul>
   <li><strong>Role</strong>: Designer, Programmer, Artist</li>
   <li><strong>Platform</strong>: iOS</li>
-  <li><strong>Tools</strong>: Unity 3D, MongoDB, Excel, Photoshop, etc.</li>
+  <li><strong>Tools</strong>: Unity 3D, MongoDB, Photoshop, etc.</li>
 </ul>
-
-<h3 id="challenges">Challenges</h3>
-
-<p>The goal of this game is to run smoothly and fast on iOS devices.</p>
 
 <h3 id="video">Video</h3>
 
 <iframe width="510" height="340" src="http://www.youtube.com/embed/w" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="challenges">Challenges</h3>
+
+<h4 id="graphic-performance">Graphic Performance</h4>
+
+<ul>
+  <li>
+    <p><strong>Problem 1: Unable to reach 60 fps on target platform.</strong> One of the most important goal of this game is to run smoothly and fast on mobile devices. All 3D games I have been involved was slow, so I gave myself this challenge.</p>
+  </li>
+  <li>
+    <p><strong>Problem 2: Characters are not easily recognizable.</strong> I use realistic character model at first. But the camera perspective made it hard to see all details on the model, and on the other hand, these details reduced game application speed.</p>
+  </li>
+  <li>
+    <p><strong>Solution: Change character models and game object resources.</strong> Actually, I change the art style of the entire game.</p>
+  </li>
+  <li>
+    <p><strong>Result: The fps increased from 30 to 60. Characters became easily recognizable.</strong></p>
+  </li>
+</ul>
+
+<h4 id="network">Network</h4>
+
+<ul>
+  <li>
+    <p><strong>Problem: I used UNet as network solution, but it doesn’t support multi-room.</strong> UNet is a high level abstraction framework provided by Unity. It can solve complex problems with simple code. But each server could only have 1 battle field. It was difficult to build a game lobby with more than one rooms.</p>
+  </li>
+  <li>
+    <p><strong>Solution: I built a new network toplogy model.</strong> It has three types of nodes, Master Server Node, Slave Server Node and Client Node. Master server runs first, and slave server and client connect to it. When a client request to start a battle, the master server assign a slave server to set up the battle field, then tell the client to connect to it.</p>
+  </li>
+  <li>
+    <p><strong>Result: It works well. It can also solve network latency problem.</strong> This solution seperate rooms and lobby, so we can put slave servers all over the world. Then the network latency problem will be easily solved.</p>
+  </li>
+</ul>
+
+<h4 id="animation">Animation</h4>
+
+<ul>
+  <li>
+    <p><strong>Problem: Prepare animation resources for game program to control.</strong> I bought all animations from Asset Store, and the animations were not yet binded with the character model skeletons.</p>
+  </li>
+  <li>
+    <p><strong>Solution: Use Animator Manager to blend animations and build state machine.</strong></p>
+  </li>
+</ul>
+
+<div style="width:100%;"><div style="margin-left:50px;">
+	Seperate the skeletons to upper body and lower body
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/upperbody.jpg" align="middle" style="margin:5px 3px" width="200" />
+	</div></div>
+	Build animation state machines for both upper body and lower body
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/animfsmhand.jpg" align="middle" style="margin:5px 3px" width="400" />
+		<img src="/img/spacemusketeer/animfsmfoot.jpg" align="middle" style="margin:5px 3px" width="400" />
+	</div></div>
+	Build animation blend tree for the aiming-walking state
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/animfsmblendtree.jpg" align="middle" style="margin:5px 3px" width="400" />
+	</div></div>
+</div></div>
+
+<ul>
+  <li><strong>Result: The character model was able to walk fluent when shooting to all directions.</strong></li>
+</ul>
+
+<h4 id="physics">Physics</h4>
+
+<ul>
+  <li>
+    <p><strong>Problem: The game behaviour when players walk toward a wall have to be predicable.</strong> I couldn’t use collision algorithm in PhysX engine because the movement speed of the characters is discrete. If I use an unpredicable phyiscs engine, the synchronization will be complex and not smooth.</p>
+  </li>
+  <li>
+    <p><strong>Solution: Impelemented a 2D collide-and-slide algorithm.</strong> I didn’t built the physics algorithm from scratch. I use the collision detection in PhysX and wrote the reaction algorithm. I use 2D physics to reduce performance impact.</p>
+  </li>
+</ul>
+
+<div style="width:100%;">
+<div style="margin-left:50px;">
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="c1">// calculate movement after collide and slide 
+</span><span class="n">Vector2</span> <span class="n">slideMovementVec</span> <span class="p">=</span> <span class="n">CordinateUtil</span><span class="p">.</span><span class="nf">calcMovementVec</span><span class="p">(</span><span class="n">slideSpdIdx</span><span class="p">,</span> <span class="n">slideDirIdx</span><span class="p">,</span> 
+    <span class="n">Const</span><span class="p">.</span><span class="n">Movement</span><span class="p">.</span><span class="n">SPEED_IDX_NUM</span><span class="p">,</span> <span class="n">Const</span><span class="p">.</span><span class="n">Movement</span><span class="p">.</span><span class="n">DIRECTION_IDX_NUM</span><span class="p">,</span> 
+    <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="n">playerDataSync</span><span class="p">.</span><span class="n">MaxMovementSpeed</span><span class="p">);</span>
+
+<span class="c1">// if player hits something after collide and slide
+</span><span class="k">if</span> <span class="p">(</span><span class="n">playerProxy2D</span><span class="p">.</span><span class="nf">calcHitArray</span><span class="p">(</span><span class="n">slideMovementVec</span><span class="p">,</span> <span class="n">Const</span><span class="p">.</span><span class="n">Layer</span><span class="p">.</span><span class="n">WALK_OBSTACLE_MASK</span><span class="p">).</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// set speed to 0
+</span>    <span class="c1">// ...
+</span><span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span> 
+    <span class="c1">// move the player
+</span>    <span class="n">playerProxy2D</span><span class="p">.</span><span class="nf">Move</span><span class="p">(</span><span class="n">slideMovementVec</span><span class="p">);</span>
+    <span class="c1">// ...
+</span><span class="p">}</span></code></pre></figure>
+
+</div>
+</div>
+
+<ul>
+  <li><strong>Result: Accurate synchronization, high-performance, safety.</strong> 2D physics ensure high-performance. And all movement logic is calculated in server, which ensure security.</li>
+</ul>
+
 
     </div>
 </div>
