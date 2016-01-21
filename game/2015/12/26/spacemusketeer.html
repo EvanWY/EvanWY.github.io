@@ -88,6 +88,10 @@
   <li><strong>Tools</strong>: Unity 3D, MongoDB, Photoshop, etc.</li>
 </ul>
 
+<h3 id="video">Video</h3>
+
+<iframe width="600" height="338" src="http://www.youtube.com/embed/wPkRVZj8reQ" frameborder="0" allowfullscreen=""></iframe>
+
 <h3 id="challenges">Challenges</h3>
 
 <h4 id="graphic-performance">Graphic Performance</h4>
@@ -183,6 +187,79 @@
 <ul>
   <li><strong>Result: The character model was able to walk fluent when shooting to all directions.</strong></li>
 </ul>
+
+<div style="width:100%;"><div style="margin-left:50px;">
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<iframe width="240" height="200" src="http://www.youtube.com/embed/9PYjoBFz-kE" frameborder="0" allowfullscreen=""></iframe>
+	</div></div>
+</div></div>
+
+<h4 id="lighting">Lighting</h4>
+
+<ul>
+  <li>
+    <p><strong>Problem: Need lighting and shadow effect for static object and character.</strong> I couldn’t use real-time lighting because it has very high performance impact.</p>
+  </li>
+  <li>
+    <p><strong>Solution: Baked GI for static object, light probe and shadow shader for character.</strong> I add a pass in the character model shader. And this pass could draw a shadow of the character. The character model shadow shader code:</p>
+  </li>
+</ul>
+
+<div style="width:100%;">
+<div style="margin-left:50px;">
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">Tags</span> <span class="p">{</span> <span class="s">"Queue"</span> <span class="o">=</span> <span class="s">"Transparent"</span> <span class="p">}</span>
+
+<span class="n">Pass</span> <span class="p">{</span>
+    <span class="c1">// use stencil to prevent overdraw, overdraw of transparent object is unacceptable
+</span>    <span class="n">Stencil</span> <span class="p">{</span>
+        <span class="n">Ref</span> <span class="mi">1</span>
+        <span class="n">Comp</span> <span class="n">notequal</span>
+        <span class="n">Pass</span> <span class="n">replace</span>
+    <span class="p">}</span>
+
+    <span class="n">Blend</span> <span class="n">SrcAlpha</span> <span class="n">OneMinusSrcAlpha</span>
+
+    <span class="n">CGPROGRAM</span>
+        <span class="cp">#pragma vertex vert
+</span>        <span class="cp">#pragma fragment frag
+</span>
+        <span class="c1">// project the model to the plane which y=2.501 
+</span>        <span class="n">float4</span> <span class="n">vert</span><span class="p">(</span><span class="n">float4</span> <span class="n">vertex</span> <span class="o">:</span> <span class="n">POSITION</span><span class="p">)</span> <span class="o">:</span> <span class="n">SV_POSITION</span> <span class="p">{</span>
+            <span class="n">float4</span> <span class="n">m1</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">_Object2World</span><span class="p">,</span> <span class="n">vertex</span><span class="p">);</span>
+            <span class="kt">float</span> <span class="n">h</span> <span class="o">=</span> <span class="n">m1</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="mf">2.501</span><span class="p">;</span>
+            <span class="n">m1</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.32</span><span class="p">;</span>
+            <span class="n">m1</span><span class="p">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.24</span><span class="p">;</span>
+            <span class="n">m1</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">2.501</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">mul</span><span class="p">(</span><span class="n">UNITY_MATRIX_VP</span><span class="p">,</span> <span class="n">m1</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// draw the model with fixed color
+</span>        <span class="n">fixed4</span> <span class="n">frag</span><span class="p">()</span> <span class="o">:</span> <span class="n">SV_Target</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">fixed4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="n">ENDCG</span>
+<span class="p">}</span> </code></pre></figure>
+
+</div>
+</div>
+
+<ul>
+  <li><strong>Result: Greatly improve the graphic quality.</strong></li>
+</ul>
+
+<div style="width:100%;"><div style="margin-left:50px;">
+	Old static objects and static objects after Baked GI
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/v3scene3.jpg" align="middle" style="margin:5px 3px" width="600" />
+		<img src="/img/spacemusketeer/v3scene4.jpg" align="middle" style="margin:5px 3px" width="600" />
+	</div></div>
+	Character shadow
+	<div style="width:100%;"><div style="margin-left:15px;">
+		<img src="/img/spacemusketeer/noshadow.jpg" align="middle" style="margin:5px 3px" height="200" />
+		<img src="/img/spacemusketeer/shadow.jpg" align="middle" style="margin:5px 3px" height="200" />
+	</div></div>
+</div></div>
 
 <h4 id="physics">Physics</h4>
 
