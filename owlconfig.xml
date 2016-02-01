@@ -1,7 +1,7 @@
 <server>
 	<master> 
-		<ip>localhhhhhost</ip>
-		<port></port>
+		<ip>192.168.0.100</ip>
+		<port>7777</port>
 	</master>
 
 	<database>
