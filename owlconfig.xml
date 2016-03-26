@@ -1,6 +1,6 @@
 <server>
 	<master> 
-		<ip>120.24.248.247</ip>
+		<ip>192.168.1.111</ip>
 		<port>7777</port>
 	</master>
 
