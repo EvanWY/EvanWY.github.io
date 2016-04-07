@@ -1,12 +1,9 @@
-<server>
-	<master> 
+<config>
+	<master_server> 
 		<ip>192.168.0.106</ip>
 		<port>7777</port>
-	</master>
-
-	<database>
-		<connstr>mongodb://120.24.248.247:27017</connstr>
-		<dbname>OwlPlayerDatabase</dbname>
-		<collname>v1.0.0</collname>
-	</database>
-</server>
+	</master_server>
+	<client>
+		<version_prefix>1.0.</version_prefix>
+	</client>
+</config>
