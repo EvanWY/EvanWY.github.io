@@ -1,6 +1,6 @@
 <config>
 	<master_server> 
-		<ip>192.168.0.106</ip>
+		<ip>120.24.248.247</ip>
 		<port>7777</port>
 	</master_server>
 	<client>
